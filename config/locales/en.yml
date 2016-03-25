@@ -21,3 +21,18 @@
 
 en:
   hello: "Hello world"
+  number:
+    currency:
+      format:
+        unit: '€ '
+        precision: 0
+        delimiter: " "
+        separator: "."
+        strip_insignificant_zeros: false
+
+  date:
+    formats:
+      default: "%d-%m-%Y"
+  time:
+    formats:
+      default: "%d-%m-%Y %H:%M"
