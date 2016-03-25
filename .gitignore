@@ -75,10 +75,11 @@ pickle-email-*.html
 
 # vim artifacts
 **.swp
+# Ignore all logfiles and tempfiles.
+/log/*
+!/log/.keep
+/tmp
 
-# Environment files that may contain sensitive data
-.env
-.powenv
 
-# tilde files are usually backup files from a text editor
-*~
+# Ignore database configurations.
+/public/storage
