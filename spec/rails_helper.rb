@@ -54,4 +54,17 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  config.before(:suite) do
+    setup_database
+  end
+end
+
+def setup_database
+  # create users
+  FactoryGirl.create(:user)
+  FactoryGirl.create(:user2)
+  FactoryGirl.create(:user3)
+  FactoryGirl.create(:user4)
+
+  FactoryGirl.create(:interesting_object)
 end
