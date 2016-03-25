@@ -4,10 +4,18 @@ $(document).ready(function() {
 
   var update_averages = function(){
     $.get(object_url, function(data){
-      var average_rating = parseFloat(data['average_rating']).toFixed(1) + " / 5";
-      var average_value_estimate = parseFloat(data['average_value_estimate']).toFixed(0);
-      $('#average_rating').html(average_rating);
-      $('#average_value_estimate').html(accounting.formatMoney(average_value_estimate, "€ ", 0, " "));
+
+      if(data['average_rating'] != null)
+      {
+        var average_rating = parseFloat(data['average_rating']).toFixed(1) + " / 5";
+        $('#average_rating').html(average_rating);
+      }
+
+      if(data['average_value_estimate'] != null) 
+      {
+        var average_value_estimate = parseFloat(data['average_value_estimate']).toFixed(0);
+        $('#average_value_estimate').html(accounting.formatMoney(average_value_estimate, "€ ", 0, " "));
+      }
     });
   };
 
