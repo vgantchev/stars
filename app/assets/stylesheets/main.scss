@@ -1,0 +1,30 @@
+img {
+  margin: 0 auto;
+}
+
+.notice{
+  position: fixed;
+  top: 70px;
+  right: 0px; //-300px;
+  max-width: 300px;
+  width: 300px;
+  .alert{
+    padding: 20px;
+    font-size: 15px;
+  }
+}
+
+.alert-error {
+    background-color: #C72534;
+    //border-color: #D6E9C6;
+    color: #FFF;
+}
+
+.notice_failed {
+  color: rgb(199,37,52);;
+}
+
+.empty-space{
+  display: block;
+  height: 62px;
+}   
