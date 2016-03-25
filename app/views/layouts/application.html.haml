@@ -8,8 +8,14 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %header
-      = render 'layouts/navigation'
-    %main{:role => "main"}
-      = render 'layouts/messages'
+    = render 'layouts/navigation'
+    .container
+      .notice#notice-success{ hidden: true}
+        .alert.alert-success
+          = notice.html_safe if notice rescue nil
+
+      .notice#notice-error{ hidden: true }
+        .alert.alert-error
+          = fast_alert.html_safe if fast_alert rescue nil
+
       = yield

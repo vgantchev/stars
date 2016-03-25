@@ -1,0 +1,51 @@
+%h1
+  = @interesting_object.name
+  - if @interesting_object.user == current_user 
+    = link_to content_tag(:i, "", class: "glyphicon glyphicon-pencil"), edit_interesting_object_path(@interesting_object)
+%hr
+
+/ Unobtrusive JS
+#js-data{ data: { user_rating: @user_rating, object_url: interesting_object_path(@interesting_object, format: :json), rate_url: rate_interesting_object_path(@interesting_object, format: :json) } }
+
+.row
+  .col-sm-3
+    = image_tag @interesting_object.photo.url
+
+
+
+  .col-sm-6
+    = @interesting_object.description
+
+.row
+  .col-sm-3
+    %h3 Average rating: 
+    %h2.text-center#average_rating
+      = @interesting_object.average_rating.try(:round, 1) || "N/A"
+      = "/ 5" if @interesting_object.average_rating
+    - unless current_user == @interesting_object.user
+      %h3
+        Your rating:
+      #user_star
+
+
+  .col-sm-4
+    .row
+      %h3 Average value estimate:
+      %h2.text-center#average_value_estimate
+        = number_to_currency(@interesting_object.average_value_estimate.try(:round)) || "N/A"
+
+    - unless current_user == @interesting_object.user
+      .row
+        %h3 Your value estimate:
+        .row
+          = form_tag estimate_value_interesting_object_path(format: :json), remote: true, id: 'estimate_value' do
+            .col-sm-6
+              .input-group
+                .input-group-addon
+                  €
+                = text_field_tag :value, @user_value_estimate.try(:round), id: 'estimated_value', class: 'form-control'
+            .col-sm-6
+              = submit_tag 'Estimate the value', class: 'btn btn-primary'
+.row
+  - unless current_user == @interesting_object.user
+    (sorry for the ugly vertical stars, couldn't get them inline and didn't want to waste more time..)

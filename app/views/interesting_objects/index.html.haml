@@ -1,0 +1,22 @@
+%h1 All interesting objects
+= link_to 'Add a new interesting object', new_interesting_object_path, class: "btn btn-md btn-success"
+.empty-space 
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Average rating
+      %th Average value estimate
+      %th Created at
+
+  %tbody
+    - @interesting_objects.each do |interesting_object|
+      %tr
+        %td= link_to interesting_object.name, interesting_object
+        %td= interesting_object.average_rating || "N/A"
+        %td= number_to_currency(interesting_object.average_value_estimate.try(:round)) || "N/A"
+        %td= l interesting_object.created_at
+
+%br
+
