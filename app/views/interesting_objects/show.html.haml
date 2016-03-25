@@ -1,7 +1,7 @@
 %h1
   = @interesting_object.name
   - if @interesting_object.user == current_user 
-    = link_to content_tag(:i, "", class: "glyphicon glyphicon-pencil"), edit_interesting_object_path(@interesting_object)
+    = link_to content_tag(:i, '', class: 'glyphicon glyphicon-pencil'), edit_interesting_object_path(@interesting_object)
 %hr
 
 / Unobtrusive JS
@@ -20,8 +20,8 @@
   .col-sm-3
     %h3 Average rating: 
     %h2.text-center#average_rating
-      = @interesting_object.average_rating.try(:round, 1) || "N/A"
-      = "/ 5" if @interesting_object.average_rating
+      = @interesting_object.average_rating.try(:round, 1) || 'N/A'
+      = '/ 5' if @interesting_object.average_rating
     - unless current_user == @interesting_object.user
       %h3
         Your rating:
@@ -32,7 +32,7 @@
     .row
       %h3 Average value estimate:
       %h2.text-center#average_value_estimate
-        = number_to_currency(@interesting_object.average_value_estimate.try(:round)) || "N/A"
+        = number_to_currency(@interesting_object.average_value_estimate.try(:round)) || 'N/A'
 
     - unless current_user == @interesting_object.user
       .row

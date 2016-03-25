@@ -20,10 +20,10 @@ class Rating < ActiveRecord::Base
 
   def one_per_user
     existing_rating = interesting_object.ratings.find_by(user: user)
-    errors.add(:base, "You have already voted") if existing_rating
+    errors.add(:base, 'You have already voted') if existing_rating
   end
 
   def owner_cannot_rate
-    errors.add(:base, "You cannot rate your own special object.") if user == interesting_object.user
+    errors.add(:base, 'You cannot rate your own special object.') if user == interesting_object.user
   end
 end

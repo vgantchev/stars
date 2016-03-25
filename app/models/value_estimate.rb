@@ -20,10 +20,10 @@ class ValueEstimate < ActiveRecord::Base
 
   def one_per_user
     existing_estimate = interesting_object.value_estimates.find_by(user: user)
-    errors.add(:user, "has already voted") if existing_estimate
+    errors.add(:user, 'has already voted') if existing_estimate
   end
 
   def owner_cannot_estimate
-    errors.add(:base, "You cannot estimate the value your own special object.") if user == interesting_object.user
+    errors.add(:base, 'You cannot estimate the value your own special object.') if user == interesting_object.user
   end
 end

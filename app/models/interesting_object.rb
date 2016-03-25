@@ -8,7 +8,7 @@ class InterestingObject < ActiveRecord::Base
   validates :name, :description, :user, presence: true
 
   # Paperclip
-  has_attached_file :photo, url: "/storage/:class/:id/:basename.:extension", styles: { medium: "250x250>" }
+  has_attached_file :photo, url: '/storage/:class/:id/:basename.:extension', styles: { medium: '250x250>' }
   validates_attachment :photo, presence: true, content_type: { content_type: ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/png'] }
 
   # Scopes
@@ -19,7 +19,7 @@ class InterestingObject < ActiveRecord::Base
   end
 
   def update_average_rating
-    self.update(average_rating: calculate_average_rating)
+    update(average_rating: calculate_average_rating)
   end
 
   def calculate_average_value_estimate
@@ -27,7 +27,7 @@ class InterestingObject < ActiveRecord::Base
   end
 
   def update_average_value_estimate
-    self.update(average_value_estimate: calculate_average_value_estimate)
+    update(average_value_estimate: calculate_average_value_estimate)
   end
 
 end

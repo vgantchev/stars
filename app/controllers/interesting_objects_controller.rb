@@ -116,25 +116,26 @@ class InterestingObjectsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_interesting_object
-      @interesting_object = InterestingObject.find(params[:id])
-    end
+  
+  # Use callbacks to share common setup or constraints between actions.
+  def set_interesting_object
+    @interesting_object = InterestingObject.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def interesting_object_params
-      params.require(:interesting_object).permit(:name, :description, :photo)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def interesting_object_params
+    params.require(:interesting_object).permit(:name, :description, :photo)
+  end
 
-    def rate_params
-      params.permit(:score)
-    end
+  def rate_params
+    params.permit(:score)
+  end
 
-    def value_estimate_params
-      params.permit(:value)
-    end
+  def value_estimate_params
+    params.permit(:value)
+  end
 
-    def check_owner
-      return redirect_to interesting_objects_path, fast_alert: "Only object owners can perform this action." unless current_user == @interesting_object.user
-    end
+  def check_owner
+    return redirect_to interesting_objects_path, fast_alert: 'Only object owners can perform this action.' unless current_user == @interesting_object.user
+  end
 end
